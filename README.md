@@ -15,15 +15,15 @@ Amongst other needs, it is critical that Space Academy has records that keep tra
 ## Database Outline
 
 - Students: records details of Students who are enrolled at Space Academy.
-	- student_id: int, auto_increment, not NULL, PK
-	- home_planet: varchar(145), not NULL
-	- is_undergraduate: tinyint, not NULL, default 1
-	- first_name: varchar(145), not NULL
-	- last_name: varchar(145), not NULL
-	- birthdate: date, not NULL
-	- receives_financial_aid: tinyint, not NULL, default 0
-	- Relationship: 
-		- M:N relationship exists between Students and Courses, which will be facilitated by an intersection table CourseEnrollments
+   - student_id: int, auto_increment, not NULL, PK
+   - home_planet: varchar(145), not NULL
+   - is_undergraduate: tinyint, not NULL, default 1
+   - first_name: varchar(145), not NULL
+   - last_name: varchar(145), not NULL
+   - birthdate: date, not NULL
+   - receives_financial_aid: tinyint, not NULL, default 0
+   - Relationship: 
+      - M:N relationship exists between Students and Courses, which will be facilitated by an intersection table CourseEnrollments
 		
 - Courses: records details of Courses available for Students to enroll in at Space Academy.
 	- course_id: int, auto_increment, not NULL, PK
