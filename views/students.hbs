@@ -1,0 +1,185 @@
+<!-- Josh Jansen
+     Josh Cantie -->
+
+<!-- Citation for the following code                 -->
+<!-- Date: 11/17/2023                                -->
+<!-- Adapted from Node.js starter guide, Step 4      -->
+<!-- Used information from the page and adapted code -->
+<!--   to display data dynamically in the page with  -->
+<!--   with Handlebars.                              -->
+<!-- Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <title>Students</title>
+</head>
+
+    <!-- Nav bar-->
+    <nav>
+        <a href="/" class="home-link">Home</a>
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/courseenrollments">CourseEnrollments</a>
+        <a href="/professors">Professors</a>
+        <a href="/professorassignments">ProfessorAssignments</a>
+        <a href="/departments">Departments</a>
+    </nav>
+    
+    <br>
+
+    <!-- Add Button -->
+    <script src="./js/students/student_forms.js"></script>
+    <button class="add-new-button" onclick="enableAddStudentForm(); disableUpdateStudentForm()">Add New Student</button>
+
+    <!-- Table -->
+    <table id="students-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>{{@key}}</th>
+                {{/each}}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.[Student ID]}}>
+                <td>{{this.[Student ID]}}</td>
+                <td>{{this.[First Name]}}</td>
+                <td>{{this.[Last Name]}}</td>
+                <td>{{this.Birthdate}}</td>
+                <td>{{this.[Home Planet]}}</td>
+                <td>{{this.[Is Undergraduate]}}</td>
+                <td>{{this.[Receives Financial Aid]}}</td>
+                <td>
+                    <a href="#" onclick="startUpdateReq({{this.[Student ID]}}); enableUpdateStudentForm();
+                    disableAddStudentForm()" class="edit-delete">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="confirmDelete({{this.[Student ID]}})" class="edit-delete">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/students/delete_student.js"></script>
+
+    <!-- Add New Student -->
+    <div id="add-student-div" style="display: none;">
+        <form id="add-student-form" class="form" method="POST" action="/students">
+            
+            <legend class="form-legend">Add Student</legend>
+
+            <!-- First Name -->
+            <label class="form-label" for="first_name">First Name</label>
+            <input class="text-input" type="text" name="first_name" id="first_name" required="required">
+
+            <!-- Last Name -->
+            <label class="form-label" for="last_name">Last Name</label>
+            <input class="text-input" type="text" name="last_name" id="last_name" required="required">
+
+            <!-- Birthdate -->
+            <label class="form-label" for="birthdate">Birthdate</label>
+            <input class="text-input" type="date" name="birthdate" id="birthdate" required="required">
+
+            <!-- Home Planet  -->
+            <label class="form-label" for="home_planet">Home Planet</label>
+            <input class="text-input" type="text" name="home_planet" id="home_planet" required="required">
+
+            <!-- Is Undergraduate -->
+            <p class="form-label">Is Undergraduate</p>
+                
+                <!-- Yes -->
+                <input type="radio" name="is_undergraduate" id="yes" value="1" required="required">
+                <label class="form-label" for="yes">Yes</label>
+                
+                <!-- No -->
+                <input type="radio" name="is_undergraduate" id="no" value="0">      
+                <label class="form-label" for="no">No</label>
+
+            <!-- Receives Financial Aid -->
+            <p class="form-label">Receives Financial Aid</p>
+                
+                <!-- Yes -->
+                <input type="radio" name="receives_financial_aid" id="yes" value="1" required="required">
+                <label class="form-label" for="yes">Yes</label>
+                
+                <!-- No -->
+                <input type="radio" name="receives_financial_aid" id="no" value="0">      
+                <label class="form-label" for="no">No</label>
+
+            <br>
+            <br>
+                            
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableAddStudentForm()" class="form-cancel">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Update Student -->
+    <div id="update-student-div" style="display: none;">
+        <form id="update-student-form-ajax" class="form">
+
+            <legend class="form-legend">Update Student</legend>
+
+            <!-- Student ID -->
+            <p class="form-label">Student ID:</p>
+            <p class="form-label" id="update_student_id_label"></p>
+
+            <!-- First Name -->
+            <label class="form-label" for="first_name">First Name</label>
+            <input class="text-input" type="text" name="first_name" id="update_student_first_name" required="required">
+
+            <!-- Last Name -->
+            <label class="form-label" for="last_name">Last Name</label>
+            <input class="text-input" type="text" name="last_name" id="update_student_last_name" required="required">
+
+            <!-- Birthdate -->
+            <label class="form-label" for="birthdate">Birthdate</label>
+            <input class="text-input" type="date" name="birthdate" id="update_student_birthdate" required="required">
+
+            <!-- Home Planet -->
+            <label class="form-label" for="home_planet">Home Planet</label>
+            <input class="text-input" type="text" name="home_planet" id="update_student_home_planet" required="required">
+
+            <!-- Is Undergraduate -->
+            <p class="form-label">Is Undergraduate</p>
+                
+                <!-- Yes -->
+                <input type="radio" name="update_student_is_undergraduate" id="update_student_is_undergraduate-yes" value="1" required="required">
+                <label class="form-label" for="yes">Yes</label>
+                
+                <!-- No -->
+                <input type="radio" name="update_student_is_undergraduate" id="update_student_is_undergraduate-no" value="0">      
+                <label class="form-label" for="no">No</label>
+
+            <!-- Receives Financial Aid -->
+            <p class="form-label">Receives Financial Aid</p>
+                
+                <!-- Yes -->
+                <input type="radio" name="update_student_receives_financial_aid" id="update_student_receives_financial_aid-yes" value="1" required="required">
+                <label class="form-label" for="yes">Yes</label>
+                
+                <!-- No -->
+                <input type="radio" name="update_student_receives_financial_aid" id="update_student_receives_financial_aid-no" value="0">      
+                <label class="form-label" for="no">No</label>
+
+            <br>
+            <br>
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableUpdateStudentForm()" class="form-cancel">Cancel</button>
+        </form>
+        <script src="./js/students/update_student.js"></script>
+    </div>
+    
+</body>
+</html>

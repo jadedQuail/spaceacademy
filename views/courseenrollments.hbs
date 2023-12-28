@@ -1,0 +1,148 @@
+<!-- Josh Jansen
+     Josh Cantie -->
+
+<!-- Citation for the following code                 -->
+<!-- Date: 11/27/2023                                -->
+<!-- Adapted from Node.js starter guide, Step 4      -->
+<!-- Used information from the page and adapted code -->
+<!--   to display data dynamically in the page with  -->
+<!--   with Handlebars.                              -->
+<!-- Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <title>CourseEnrollments</title>
+</head>
+
+    <!-- Nav bar-->
+    <nav>
+        <a href="/" class="home-link">Home</a>
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/courseenrollments">CourseEnrollments</a>
+        <a href="/professors">Professors</a>
+        <a href="/professorassignments">ProfessorAssignments</a>
+        <a href="/departments">Departments</a>
+    </nav>
+    
+    <br>
+
+    <!-- Add Button -->
+    <script src="./js/courseenrollments/courseenrollment_forms.js"></script>
+    <button class="add-new-button" onclick="enableAddCourseEnrollmentForm(); disableUpdateCourseEnrollmentForm()">Add New Course Enrollment</button>
+
+    <!-- Table -->
+    <table id="courseenrollments-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>{{@key}}</th>
+                {{/each}}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.[Course Enrollment ID]}}>
+                <td>{{this.[Course Enrollment ID]}}</td>
+                <td>{{this.[Student Name]}}</td>
+                <td>{{this.[Course Name]}}</td>
+                <td>
+                    <a href="#" onclick="startUpdateReq({{this.[Course Enrollment ID]}}); enableUpdateCourseEnrollmentForm(); 
+                    disableAddCourseEnrollmentForm()" class="edit-delete">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="confirmDelete({{this.[Course Enrollment ID]}})" class="edit-delete">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/courseenrollments/delete_courseenrollment.js"></script>
+    
+    <!-- Add New Course Enrollment -->
+    <div id="add-courseenrollment-div" style="display: none;">
+        <form id="add-courseenrollment-form" class="form" method="POST" action="/courseenrollments">
+            
+            <legend class="form-legend">Add Course Enrollment</legend>
+
+            <!-- Student Name -->
+            <label class="form-label" for="student_id">Student Name:</label>
+            <select name="student_id" id="student_select" required>
+                <option value="">--Select a Student--</option>
+                {{#each students}}
+                <option value={{this.[Student ID]}}>{{this.[Student Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+            
+            <!-- Course Name -->
+            <label class="form-label" for="course_id">Course Name:</label>
+            <select name="course_id" id="course_select" required>
+                <option value="">--Select a Course--</option>
+                {{#each courses}}
+                <option value={{this.[Course ID]}}>{{this.[Course Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" class="form-cancel" onclick="disableAddCourseEnrollmentForm()">Cancel</button>
+
+        </form>
+    </div>
+
+    <!-- Update Course Enrollment -->
+    <div id="update-courseenrollment-div" style="display: none;">
+        <form id="update-courseenrollment-form-ajax" class="form">
+
+            <legend class="form-legend">Update Course Enrollment</legend>
+
+            <!-- Course Enrollment ID -->
+            <p class="form-label">Course Enrollment ID:</p>
+            <p class="form-label" id="update_courseenrollment_id_label"></p>
+
+            <!-- Student Name -->
+            <label class="form-label" for="update_courseenrollment_student_id">Student Name:</label>
+            <select name="update_courseenrollment_student_id" id="update_courseenrollment_student_select" required>
+                <option value="">--Select a Student--</option>
+                {{#each students}}
+                <option value={{this.[Student ID]}}>{{this.[Student Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+            
+            <!-- Course Name -->
+            <label class="form-label" for="update_courseenrollment_course_id">Course Name:</label>
+            <select name="update_courseeenrollment_course_id" id="update_courseenrollment_course_select" required>
+                <option value="">--Select a Course--</option>
+                {{#each courses}}
+                <option value={{this.[Course ID]}}>{{this.[Course Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" class="form-cancel" onclick="disableUpdateCourseEnrollmentForm()">Cancel</button>
+        </form>
+        <script src="./js/courseenrollments/update_courseenrollment.js"></script>
+    </div>
+
+</body>
+</html>

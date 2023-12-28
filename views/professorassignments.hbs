@@ -1,0 +1,149 @@
+<!-- Josh Jansen
+     Josh Cantie -->
+
+<!-- Citation for the following code                 -->
+<!-- Date: 11/27/2023                                -->
+<!-- Adapted from Node.js starter guide, Step 4      -->
+<!-- Used information from the page and adapted code -->
+<!--   to display data dynamically in the page with  -->
+<!--   with Handlebars.                              -->
+<!-- Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <title>ProfessorAssignments</title>
+</head>
+ 
+    <!-- Nav bar-->
+    <nav>
+        <a href="/" class="home-link">Home</a>
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/courseenrollments">CourseEnrollments</a>
+        <a href="/professors">Professors</a>
+        <a href="/professorassignments">ProfessorAssignments</a>
+        <a href="/departments">Departments</a>
+    </nav>
+    
+    <br>
+
+    <!-- Add Button -->
+    <script src="./js/professorassignments/professorassignment_forms.js"></script>
+    <button class="add-new-button" onclick="enableAddProfessorAssignmentForm(); 
+    disableUpdateProfessorAssignmentForm()">Add New Professor Assignment</button>
+
+    <!-- Table -->
+    <table id="professorassignments-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>{{@key}}</th>
+                {{/each}}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.[Professor Assignment ID]}}>
+                <td>{{this.[Professor Assignment ID]}}</td>
+                <td>{{this.[Professor Name]}}</td>
+                <td>{{this.[Course Name]}}</td>
+                <td>
+                    <a href="#" onclick="startUpdateReq({{this.[Professor Assignment ID]}}); enableUpdateProfessorAssignmentForm();
+                    disableAddProfessorAssignmentForm()" class="edit-delete">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="confirmDelete({{this.[Professor Assignment ID]}})" class="edit-delete">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/professorassignments/delete_professorassignment.js"></script>
+
+    <!-- Add New Professor Assignment -->
+    <div id="add-professorassignment-div" style="display: none;">
+        <form id="add-professorassignment-form" class="form" method="POST" action="/professorassignments">
+            
+            <legend class="form-legend">Add Professor Assignment</legend>
+
+            <!-- Professor Name -->
+            <label class="form-label" for="professor_id">Student Name:</label>
+            <select name="professor_id" id="professor_select" required>
+                <option value="">--Select a Professor--</option>
+                {{#each professors}}
+                <option value={{this.[Professor ID]}}>{{this.[Professor Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+            
+            <!-- Course Name -->
+            <label class="form-label" for="course_id">Course Name:</label>
+            <select name="course_id" id="course_select" required>
+                <option value="">--Select a Course--</option>
+                {{#each courses}}
+                <option value={{this.[Course ID]}}>{{this.[Course Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" class="form-cancel" onclick="disableAddProfessorAssignmentForm()">Cancel</button>
+
+        </form>
+    </div>
+
+    <!-- Update Professor Assignment -->
+    <div id="update-professorassignment-div" style="display: none;">
+        <form id="update-professorassignment-form-ajax" class="form">
+
+            <legend class="form-legend">Update Professor Assignment</legend>
+
+            <!-- Professor Assignment ID -->
+            <p class="form-label">Professor Assignment ID:</p>
+            <p class="form-label" id="update_professorassignment_id_label"></p>
+
+            <!-- Professor Name -->
+            <label class="form-label" for="update_professorassignment_professor_id">Professor Name:</label>
+            <select name="update_professorassignment_professor_id" id="update_professorassignment_professor_select" required>
+                <option value="">--Select a Professor--</option>
+                {{#each professors}}
+                <option value={{this.[Professor ID]}}>{{this.[Professor Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+            
+            <!-- Course Name -->
+            <label class="form-label" for="update_professorassignment_course_id">Course Name:</label>
+            <select name="update_professorassignment_course_id" id="update_professorassignment_course_select" required>
+                <option value="">--Select a Course--</option>
+                {{#each courses}}
+                <option value={{this.[Course ID]}}>{{this.[Course Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" class="form-cancel" onclick="disableUpdateProfessorAssignmentForm()">Cancel</button>
+        </form>
+        <script src="./js/professorassignments/update_professorassignment.js"></script>
+    </div>
+
+</body>
+</html>

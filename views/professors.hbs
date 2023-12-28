@@ -1,0 +1,159 @@
+<!-- Josh Jansen
+     Josh Cantie -->
+
+<!-- Citation for the following code                 -->
+<!-- Date: 11/27/2023                                -->
+<!-- Adapted from Node.js starter guide, Step 4      -->
+<!-- Used information from the page and adapted code -->
+<!--   to display data dynamically in the page with  -->
+<!--   with Handlebars.                              -->
+<!-- Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <title>Professors</title>
+</head>
+
+    <!-- Nav bar-->
+    <nav>
+        <a href="/" class="home-link">Home</a>
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/courseenrollments">CourseEnrollments</a>
+        <a href="/professors">Professors</a>
+        <a href="/professorassignments">ProfessorAssignments</a>
+        <a href="/departments">Departments</a>
+    </nav>
+    
+    <br>
+    
+    <!-- Add Button -->
+    <script src="./js/professors/professor_forms.js"></script>
+    <button class="add-new-button" onclick="enableAddProfessorForm(); 
+    disableUpdateProfessorForm()">Add New Professor</button>
+
+    <!-- Table -->
+    <table id="professors-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>{{@key}}</th>
+                {{/each}}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.[Professor ID]}}>
+                <td>{{this.[Professor ID]}}</td>
+                <td>{{this.[Department Name]}}</td>
+                <td>{{this.[First Name]}}</td>
+                <td>{{this.[Last Name]}}</td>
+                <td>{{this.[Birthdate]}}</td>
+                <td>{{this.[Salary]}}</td>
+                <td>
+                    <a href="#" onclick="startUpdateReq({{this.[Professor ID]}}); enableUpdateProfessorForm(); 
+                    disableAddProfessorForm()" class="edit-delete">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="confirmDelete({{this.[Professor ID]}})" class="edit-delete">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/professors/delete_professor.js"></script>
+
+    <!-- Add New Professor -->
+    <div id="add-professor-div" style="display: none;">
+        <form id="add-professor-form" class="form" method="POST" action="/professors">
+            
+            <legend class="form-legend">Add Professor</legend>
+
+            <!-- Department Name -->
+            <label class="form-label" for="department_id">Department Name:</label>
+            <select name="department_id" id="department_select" required>
+                <option value="">Select a Department</option>
+                {{#each departments}}
+                <option value={{this.[Department ID]}}>{{this.[Department Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- First Name -->
+            <label class="form-label" for="first_name">First Name</label>
+            <input class="text-input" type="text" name="first_name" id="first_name" required="required">
+
+            <!-- Last Name -->
+            <label class="form-label" for="last_name">Last Name</label>
+            <input class="text-input" type="text" name="last_name" id="last_name" required="required">
+
+            <!-- Birthdate -->
+            <label class="form-label" for="birthdate">Birthdate</label>
+            <input class="text-input" type="date" name="birthdate" id="birthdate" required="required">
+
+            <!-- Salary -->
+            <label class="form-label" for="salary">Salary</label>
+            <input class="text-input" type="number" min="0" name="salary" id="salary" required="required">
+                            
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableAddProfessorForm()" class="form-cancel">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Update Professor -->
+    <div id="update-professor-div" style="display: none;">
+        <form id="update-professor-form-ajax" class="form">
+
+            <legend class="form-legend">Update Professor</legend>
+
+            <!-- Professor ID -->
+            <p class="form-label">Professor ID:</p>
+            <p class="form-label" id="update_professor_id_label"></p>
+
+            <!-- Department Name -->
+            <label class="form-label" for="update_professor_department_id">Department Name:</label>
+            <select name="update_professor_department_id" id="update_professor_department_select" required>
+                <option value="">--Select a Department--</option>
+                {{#each departments}}
+                <option value={{this.[Department ID]}}>{{this.[Department Name]}}</option>
+                {{/each}}
+            </select>
+
+            <br>
+            <br>
+
+            <!-- First Name -->
+            <label class="form-label" for="first_name">First Name</label>
+            <input class="text-input" type="text" name="first_name" id="update_professor_first_name" required="required">
+
+            <!-- Last Name -->
+            <label class="form-label" for="last_name">Last Name</label>
+            <input class="text-input" type="text" name="last_name" id="update_professor_last_name" required="required">
+
+            <!-- Birthdate -->
+            <label class="form-label" for="birthdate">Birthdate</label>
+            <input class="text-input" type="date" name="birthdate" id="update_professor_birthdate" required="required">
+
+            <!-- Salary -->
+            <label class="form-label" for="salary">Salary</label>
+            <input class="text-input" type="number" min="0" name="salary" id="update_professor_salary" required="required">
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableUpdateProfessorForm()" class="form-cancel">Cancel</button>
+        </form>
+        <script src="./js/professors/update_professor.js"></script>
+    </div>
+    
+</body>
+</html>

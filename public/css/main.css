@@ -1,0 +1,182 @@
+/* Josh Jansen
+   Josh Cantie */
+
+/* CSS for Database HTML pages */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #474787;
+}
+
+nav {
+    padding: 10px;
+    border: 3px solid #1d1d37;
+    border-radius: 10px;
+    background-color: #1d1d37;
+}
+
+nav a {
+    font-size: 1.5em;
+    color: #e6e6fe;
+    margin: 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #7270e8;
+    transition: color 0.2s;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 60px 10px;
+}
+
+th {
+    color: #7b79f6;
+    text-align: left;
+    text-decoration: underline;
+}
+
+tr {
+    font-size: 1.5em;
+}
+
+td {
+    color: #abaaff;
+}
+
+/* Classes */
+
+.text-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #474787;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #bebebe;
+    font-size: 1.25em;
+}
+
+.home-link {
+    color: #ff7b7b;
+}
+
+.home-link:hover {
+    color: #d92424;
+    transition: color 0.2s;
+}
+
+.reset-link {
+    color: #ff7b7b;
+    background-color: #474787;
+    border: 1px solid #474787;
+    border-radius: 4px;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.reset-link:hover {
+    color: #d92424;
+    transition: color 0.2s;
+}
+
+.header-info {
+    color: #abaaff;
+    margin: 20px;
+}
+
+.desc-list li {
+    color: #abaaff;
+    font-size: 1.25em;
+    margin: 10px 0;
+}
+
+.edit-delete {
+    color: #abaaff;
+}
+
+.edit-delete:hover {
+    color: #7270e8;
+    transition: color 0.2s;
+}
+
+.form-legend {
+    color: #7b79f6;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.form {
+    margin: 20px;
+    background-color: #474787;
+    padding: 10px;
+    margin-right: 50%;
+}
+
+.form-label {
+    color: #abaaff;
+    font-size: 1.25em;
+}
+
+.form-submit {
+    padding: 12px 40px;
+    width: 100%;
+    margin-top: 8px;
+    border: 1px solid #474787;
+    color: white;
+    background-color: #42b883;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: #318760;
+    transition: background-color 0.2s;
+}
+
+.form-cancel {
+    padding: 12px 40px;
+    width: 100%;
+    margin-top: 8px;
+    border: 1px solid #474787;
+    color: white;
+    background-color: #f95959;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+.form-cancel:hover{
+    background-color: #ab3f3f;
+    transition: background-color 0.2s;
+}
+
+.add-new-button {
+    margin-top: 20px;
+    font-size: 1.25em;
+    color: white;
+    background-color: #42b883;
+    margin: 20px;
+    border: 1px solid #474787;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.add-new-button:hover {
+    background-color: #318760;
+    transition: background-color 0.2s;
+}
+
+.reset-div {
+    margin: 50px 20px 20px 20px;
+}

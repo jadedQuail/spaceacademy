@@ -1,0 +1,220 @@
+Josh Jansen
+Josh Cantie
+
+Code Citations
+
+1. db-connector.js
+Citation fror the script:
+Date: 11/14/2023
+Copied from Node.JS Starter App guide, Step 1
+No originality, just using the provided code to
+connect to our SQL database.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+2. DML.sql
+Citation for queries contained within DML.sql:
+Date: 10/29/2023
+Adapted from sample SQL queries on Project Step 3 Draft Version page
+Used basic structure and modified with values for our database
+Source URL: https://canvas.oregonstate.edu/courses/1933532/assignments/9297505
+
+3. courseenrollment_forms.js
+Citation for the functions contained within courseenrollment_forms.js:
+Date: 11/18/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+4. delete_courseenrollment.js
+Citation for the functions contained within delete_courseenrollment.js:
+Date: 11/18/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+5. update_courseenrollment.js
+Citation for the "on submit" functions contained within update_courseenrollment.js:
+Date: 11/20/2023
+Adapted from Node.JS Starter App guide, Step 8
+Copied code updating an entity and adapted the code to work with our variable, function, and route names.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
+6. course_forms.js
+Citation for the functions contained within course_forms.js:
+Date: 11/18/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+7. delete_course.js
+Citation for the functions contained within delete_course.js:
+Date: 11/25/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+8. update_course.js
+Citation for the "on submit" functions contained within update_course.js:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, Step 8
+Copied code updating an entity and adapted the code to work with our variable, function, and route names.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
+9. department_forms.js
+Citation for the functions contained within department_forms.js:
+Date: 11/14/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+10. delete_department.js
+Citation for the functions contained within delete_department.js:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+11. update_department.js
+Citation for the "on submit" functions contained within update_department.js:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, Step 8
+Copied code updating an entity and adapted the code to work with our variable, function, and route names.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
+12. professorassignment_forms.js
+Citation for the functions contained within professorassignment_forms.js:
+Date: 11/25/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+13. delete_professorassignment.js
+Citation for the functions contained within delete_professorassignment.js:
+Date: 11/25/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+14. update_professorassignment.js
+Citation for the "on submit" functions contained within update_professorassignment.js:
+Date: 11/25/2023
+Adapted from Node.JS Starter App guide, Step 8
+Copied code updating an entity and adapted the code to work with our variable, function, and route names.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
+15. professor_forms.js
+Citation for the functions contained within professor_forms.js:
+Date: 11/17/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+16. delete_professor.js
+Citation for the functions contained within delete_professor.js:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+17. update_professor.js
+Citation for the "on submit" functions contained within update_professor.js:
+Date: 11/27/2023
+Adapted from a StackOverflow post.
+Adapted code from a post that demonstrated how to create a number formatting object to stylize currency.
+Source URL: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+
+18. student_forms.js
+Citation for the functions contained within student_forms.js:
+Date: 11/17/2023
+Adapted from JavaScript in HTML pages from "Exploration - Web Application Technology" from Module 6
+Adapted code for enabling and disabling HTML elements in a JavaScript function
+Source URL: https://canvas.oregonstate.edu/courses/1933532/pages/exploration-web-application-technology
+
+19. delete_student.js
+Citation for the functions contained within delete_student.js:
+Date: 11/17/2023
+Adapted from Node.JS Starter App guide, Step 7
+Adapted code for using regular JavaScript (Part B) to send a delete request. 
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%201%20-%20Connecting%20to%20a%20MySQL%20Database
+
+20. update_student.js
+Citation for the "on submit" functions contained within update_student.js:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, Step 8
+Copied code updating an entity and adapted the code to work with our variable, function, and route names.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%208%20-%20Dynamically%20Updating%20Data
+
+21. departments.js
+Citation for the currency-formatting object: 
+Date: 11/27/2023
+Adapted from a StackOverflow post.
+Adapted code from a post that demonstrated how to create a number formatting object to stylize currency.
+Source URL: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+
+22. professors.js
+Citation for the currency-formatting object:
+Date: 11/27/2023
+Adapted from a StackOverflow post.
+Adapted code from a post that demonstrated how to create a number formatting object to stylize currency.
+Source URL: https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+
+23. app.js
+Citation for the code within this script:
+Date: 11/14/2023
+Adapted from Node.JS Starter App guide, various steps
+Copied "SETUP" lines from Node.JS Starter App and adapted and created routes based on structure shown in the guide.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/
+
+24. courseenrollments.hbs 
+Citation for the handlebars code that displays data from the backend:
+Date: 11/27/2023              
+Adapted from Node.js starter guide, Step 4   
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+
+25. courses.hbs
+Citation for the handlebars code that displays data from the backend:
+Date: 11/27/2023
+Adapted from Node.js starter guide, Step 4
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+
+26. departments.hbs
+Citation for the handlebars code that displays data from the backend:
+Date: 11/14/2023
+Adapted from Node.js starter guide, Step 4
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+
+27. professorassignments.hbs
+Citation for the handlebars code that displays data from the backend:
+Date: 11/27/2023
+Adapted from Node.js starter guide, Step 4
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+
+28. professors.hbs
+Citation for the handlebars code that displays data from the backend:
+Date: 11/27/2023
+Adapted from Node.js starter guide, Step 4
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data
+
+29. students.hbs
+Citation for the handlebars code that displays data from the backend:
+Date: 11/17/2023
+Adapted from Node.js starter guide, Step 4
+   Used information from the page and adapted code
+   to display data dynamically in the page with
+   with Handlebars.
+Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data

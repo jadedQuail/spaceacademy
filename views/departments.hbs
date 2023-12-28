@@ -1,0 +1,117 @@
+<!-- Josh Jansen
+     Josh Cantie -->
+
+<!-- Citation for the following code                 -->
+<!-- Date: 11/14/2023                                -->
+<!-- Adapted from Node.js starter guide, Step 4      -->
+<!-- Used information from the page and adapted code -->
+<!--   to display data dynamically in the page with  -->
+<!--   with Handlebars.                              -->
+<!-- Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/tree/main/Step%204%20-%20Dynamically%20Displaying%20Data -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+    <title>Departments</title>
+</head>
+    
+    <!-- Nav bar-->
+    <nav>
+        <a href="/" class="home-link">Home</a>
+        <a href="/students">Students</a>
+        <a href="/courses">Courses</a>
+        <a href="/courseenrollments">CourseEnrollments</a>
+        <a href="/professors">Professors</a>
+        <a href="/professorassignments">ProfessorAssignments</a>
+        <a href="/departments">Departments</a>
+    </nav>
+    
+    <br>
+
+    <!-- Add Button -->
+    <script src="./js/departments/department_forms.js"></script>
+    <button class="add-new-button" onclick="enableAddDeptForm(); disableUpdateDeptForm()">Add New Department</button>
+
+    <!-- Table -->
+    <table id="departments-table">
+        <thead>
+            <tr>
+                {{#each data.[0]}}
+                <th>{{@key}}</th>
+                {{/each}}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each data}}
+            <tr data-value={{this.[Department ID]}}>
+                <td>{{this.[Department ID]}}</td>
+                <td>{{this.[Department Name]}}</td>
+                <td>{{this.[Department Budget]}}</td>
+                <td>
+                    <a href="#" onclick="startUpdateReq({{this.[Department ID]}}); enableUpdateDeptForm();
+                    disableAddDeptForm()" class="edit-delete">Edit</a>
+                </td>
+                <td>
+                    <a href="#" onclick="confirmDelete({{this.[Department ID]}})" class="edit-delete">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="./js/departments/delete_department.js"></script>
+
+    <br>
+
+    <!-- Add New Department -->
+    <div id="add-department-div" class="div-center" style="display: none;">
+        <form id="add-department-form" class="form" method="POST" action="/departments">
+            
+            <legend class="form-legend">Add Department</legend>
+
+            <!-- Department Name -->
+            <label class="form-label" for="department_name">Department Name</label>
+            <input class="text-input" type="text" name="department_name" id="department_name" required="required">
+
+            <!-- Department Budget -->
+            <label class="form-label" for="department_budget">Department Budget</label>
+            <input class="text-input" type="number" min="0" name="department_budget" id="department_budget" required="required">
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableAddDeptForm()" class="form-cancel">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Update Department -->
+    <div id="update-department-div" style="display: none;">
+        <form id="update-department-form-ajax" class="form">
+
+            <legend class="form-legend">Update Department</legend>
+
+            <!-- Department ID -->
+            <p class="form-label">Department ID:</p>
+            <p class="form-label" id="update_department_id_label"></p>
+
+            <!-- Department Name -->
+            <label class="form-label" for="update_department_name">Department Name</label>
+            <input class="text-input" type="text" name="update_department_name" id="update_department_name" required="required">
+
+            <!-- Department Budget -->
+            <label class="form-label" for="update_department_budget">Department Budget</label>
+            <input class="text-input" type="number" min="0" name="update_department_budget" id="update_department_budget" required="required">
+
+            <!-- Submit and cancel buttons -->
+            <input class="form-submit" type="submit">
+            <button type="button" onclick="disableUpdateDeptForm()" class="form-cancel">Cancel</button>
+        </form>
+        <script src="./js/departments/update_department.js"></script>
+    </div>
+    
+</body>
+</html>
