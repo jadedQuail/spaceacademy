@@ -1,6 +1,12 @@
 Josh Jansen
 Josh Cantie
 
+---------------------------------------------------------------------------------------
+--										     --
+--  This website can be seen at http://spaceacademy.us-east-2.elasticbeanstalk.com/  --
+--										     --
+---------------------------------------------------------------------------------------
+
 Code Citations
 
 1. db-connector.js
