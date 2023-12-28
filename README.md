@@ -1,6 +1,6 @@
 # Space Academy
 
-This is a web application and database for a theoretical university in outer space, which will hopefully one day become a reality for the sole purpose of being able to make an accompanying database.
+This is a web application and database for a theoretical university in outer space, which will hopefully one day become a reality for the sole purpose of me then being able to make an accompanying database.
 
 ## URL
 
@@ -16,8 +16,58 @@ Amongst other needs, it is critical that Space Academy has records that keep tra
 
 - Students: records details of Students who are enrolled at Space Academy.
 	- student_id: int, auto_increment, not NULL, PK
+	- home_planet: varchar(145), not NULL
+	- is_undergraduate: tinyint, not NULL, default 1
+	- first_name: varchar(145), not NULL
+	- last_name: varchar(145), not NULL
+	- birthdate: date, not NULL
+	- receives_financial_aid: tinyint, not NULL, default 0
 	- Relationship: 
 		- M:N relationship exists between Students and Courses, which will be facilitated by an intersection table CourseEnrollments
+		
+- Courses: records details of Courses available for Students to enroll in at Space Academy.
+	- course_id: int, auto_increment, not NULL, PK
+	- department_id: int, FK
+	- course_name: varchar(145), not NULL
+	- course_description: text
+	- credit_hours: int, not NULL
+	- Relationship: 
+		- M:N relationship exists between Professors and Courses, which is facilitated by an intersection table ProfessorAssignments.
+		- 1:M relationship exists between Departments and Courses, which is implemented with department_id as a FK inside of Courses.
+		- M:N relationship exists between Students and Courses, which will be facilitated by an intersection table CourseEnrollments.
+
+- CourseEnrollments: intersection table that facilitates the M:N relationship between Students and Courses.
+	- course_enrollment_id: int, auto_increment, not NULL, PK
+	- course_id: int, not NULL, FK 
+	- student_id: int, not NULL, FK
+	- Relationship: 
+		- Facilitates M:N relationship between Students and Courses
+		
+- Professors: records details of Professors who teach Courses.
+	- professor_id: int, auto_increment, not NULL, PK
+	- department_id: int, not NULL, FK
+	- first_name: varchar(145), not NULL
+	- last_name: varchar(145), not NULL
+	- birthdate: date, not NULL
+	- salary: decimal(10,2), not NULL
+	- Relationship: 
+		- 1:M relationship exists between Departments and Professors, which is implemented with department_id as a FK inside of Professors.
+		- M:N relationship exists between Professors and Courses, which is facilitated by an intersection table ProfessorAssignments.
+
+- ProfessorAssignments: intersection table that facilitates the M:N relationship between Professors and Courses.
+	- professor_assignment_id: int, auto_increment, not NULL, PK
+	- professor_id: int, not NULL, FK 
+	- course_id: int, not NULL, FK
+	- Relationship: 
+		- Facilitates M:N relationship between Professors and Courses
+
+- Departments: records details of Departments which Courses and Professors are categorized by.
+	- department_id: int, auto_increment, not NULL, PK
+	- department_name: varchar(145), not NULL
+	- department_budget: decimal(10,2), not NULL
+	- Relationship:
+		- 1:M relationship exists between Departments and Professors, which is implemented with department_id as a FK inside of Professors.
+		- 1:M relationship exists between Departments and Courses, which is implemented with department_id as a FK inside of Courses.
 
 ## Code Citations
 
