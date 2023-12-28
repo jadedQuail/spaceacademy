@@ -1,13 +1,25 @@
-Josh Jansen
-Josh Cantie
+# Space Academy
 
----------------------------------------------------------------------------------------
---										     --
---  This website can be seen at http://spaceacademy.us-east-2.elasticbeanstalk.com/  --
---										     --
----------------------------------------------------------------------------------------
+This is a web application and database for a theoretical university in outer space, which will hopefully one day become a reality for the sole purpose of being able to make an accompanying database.
 
-Code Citations
+## URL
+
+http://spaceacademy.us-east-2.elasticbeanstalk.com/
+
+## Project Outline
+
+Space Academy is an institution of higher learning that serves 10,000 of the brightest undergraduate students from various planets in the solar system. The university offers 500 courses across 24 different departments and has 200 professors on staff. A website with a database can help keep track of the various courses, the students that are in those courses, which professors teach those courses, and which departments these teachers and courses fall under. 
+
+Amongst other needs, it is critical that Space Academy has records that keep track of student enrollments into classes, so that the institution can track which courses a student has completed and how they are progressing towards a degree and graduation. It is also critical that professors and courses be organized into their proper departments, so that a department’s course catalog can be browsed and professors can be assigned and accounted for.
+
+## Database Outline
+
+- Students: records details of Students who are enrolled at Space Academy.
+	- student_id: int, auto_increment, not NULL, PK
+	- Relationship: 
+		- M:N relationship exists between Students and Courses, which will be facilitated by an intersection table CourseEnrollments
+
+## Code Citations
 
 1. db-connector.js
 Citation fror the script:
