@@ -1,14 +1,3 @@
-// Josh Jansen
-// Josh Cantie
-
-// Citation for the following code:
-// Date: 11/14/2023
-// Adapted from Node.JS Starter App guide, various steps
-// Copied "SETUP" lines from Node.JS Starter App and adapted and created routes based on structure shown in the guide.
-// Source URL: https://github.com/osu-cs340-ecampus/nodejs-starter-app/
-
-// Site URL: http://flip2.engr.oregonstate.edu:11112/
-
 'use strict';
 
 /* SETUP */
@@ -25,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 // Set a port
-const PORT = 11112;
+const PORT = process.env.PORT || 8081;
 
 // Database connection
 const db = require('./database/db-connector');

@@ -76,7 +76,8 @@
 
             <!-- Department Name -->
             <label class="form-label" for="department_name">Department Name</label>
-            <input class="text-input" type="text" name="department_name" id="department_name" required="required">
+            <input class="text-input" type="text" name="department_name" id="department_name" required="required"
+                pattern="[^\x22\x27]+" title="You cannot use quotations marks in your entry.">
 
             <!-- Department Budget -->
             <label class="form-label" for="department_budget">Department Budget</label>
@@ -100,7 +101,8 @@
 
             <!-- Department Name -->
             <label class="form-label" for="update_department_name">Department Name</label>
-            <input class="text-input" type="text" name="update_department_name" id="update_department_name" required="required">
+            <input class="text-input" type="text" name="update_department_name" id="update_department_name" required="required"
+                pattern="[^\x22\x27]+" title="You cannot use quotations marks in your entry.">
 
             <!-- Department Budget -->
             <label class="form-label" for="update_department_budget">Department Budget</label>

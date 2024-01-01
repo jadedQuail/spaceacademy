@@ -8,8 +8,9 @@ SET AUTOCOMMIT = 0;
 -- Create Tables
 -- -------------
 
--- Has M:N relationship with Courses which is facilitated by CourseEnrollments. 
-CREATE OR REPLACE TABLE Students (
+-- Has M:N relationship with Courses which is facilitated by CourseEnrollments.
+DROP TABLE Students;
+CREATE TABLE Students (
   student_id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(145) NOT NULL,
   last_name VARCHAR(145) NOT NULL,
@@ -21,8 +22,9 @@ CREATE OR REPLACE TABLE Students (
 );
 
 -- Has a 1:M relationship between Professors 
--- Has a 1:M relationship between Courses 
-CREATE OR REPLACE TABLE Departments (
+-- Has a 1:M relationship between Courses
+DROP TABLE Departments;
+CREATE TABLE Departments (
   department_id INT NOT NULL AUTO_INCREMENT,
   department_name VARCHAR(145) NOT NULL,
   department_budget DECIMAL(10,2) NOT NULL,
@@ -32,7 +34,8 @@ CREATE OR REPLACE TABLE Departments (
 -- Has a M:N relationship between Professors which is facilitated by ProfessorAssignments
 -- Has a M:N relationship between Students which is facilitated by CourseEnrollments
 -- Has a 1:M relationship between Departments
-CREATE OR REPLACE TABLE Courses (
+DROP TABLE Courses;
+CREATE TABLE Courses (
   course_id INT NOT NULL AUTO_INCREMENT,
   department_id INT,
   course_name VARCHAR(145) NOT NULL,
@@ -44,8 +47,9 @@ CREATE OR REPLACE TABLE Courses (
 		ON DELETE SET NULL
 );
 
--- Facilitates a M:N relationship between Studenets and Courses 
-CREATE OR REPLACE TABLE CourseEnrollments (
+-- Facilitates a M:N relationship between Studenets and Courses
+DROP TABLE CourseEnrollments; 
+CREATE TABLE CourseEnrollments (
   course_enrollment_id INT NOT NULL AUTO_INCREMENT,
   student_id INT NOT NULL,
   course_id INT NOT NULL,
@@ -60,7 +64,8 @@ CREATE OR REPLACE TABLE CourseEnrollments (
 
 -- Has a M:N relationship between Courses which is facilitated by ProfessorAssignments
 -- Has a 1:M relationship between Departments 
-CREATE OR REPLACE TABLE Professors (
+DROP TABLE Professors;
+CREATE TABLE Professors (
   professor_id INT NOT NULL AUTO_INCREMENT,
   department_id INT NOT NULL,
   first_name VARCHAR(145) NOT NULL,
@@ -73,8 +78,9 @@ CREATE OR REPLACE TABLE Professors (
 		ON DELETE CASCADE
 );
 
--- Facilitates a M:N relationship between Professors and Courses 
-CREATE OR REPLACE TABLE ProfessorAssignments (
+-- Facilitates a M:N relationship between Professors and Courses
+DROP TABLE ProfessorAssignments; 
+CREATE TABLE ProfessorAssignments (
   professor_assignment_id INT NOT NULL AUTO_INCREMENT,
   professor_id INT NOT NULL,
   course_id INT NOT NULL,
